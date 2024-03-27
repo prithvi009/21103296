@@ -32,7 +32,6 @@ export const companyRegister = async(req, res) => {
 export const companyLogin = async(req, res) => {
     try{
         const { companyName, clientID, clientSecret, ownerName, ownerEmail, rollNo } = req.body;
-        console.log(req.body);
         const response = await axios.post(`${process.env.API_URL}/auth`,{
             companyName,
             clientID,
