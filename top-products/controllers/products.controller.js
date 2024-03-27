@@ -4,11 +4,13 @@ import axios from 'axios';
 export const getProducts = async (req, res) => {
     try {
         const {top, minPrice, maxPrice} = req.query;
+        const {company, category} = req.params;
+        console.log(company, category, top, minPrice, maxPrice);
         const Authorization = req.headers.authorization.split(' ')[1];
         let config = {
             method: 'get',
             maxBodyLength: Infinity,
-            url: `${process.env.API_URL}/companies/AMZ/categories/Laptop/products?top=${top}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
+            url: `${process.env.API_URL}/companies/${company}/categories/${category}/products?top=${top}&minPrice=${minPrice}&maxPrice=${maxPrice}`,
             headers: { 
               'Authorization': `Bearer ${Authorization}` 
             }
