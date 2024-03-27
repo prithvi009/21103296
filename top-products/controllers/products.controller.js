@@ -5,7 +5,6 @@ export const getProducts = async (req, res) => {
     try {
         const {top, minPrice, maxPrice} = req.query;
         const {company, category} = req.params;
-        console.log(company, category, top, minPrice, maxPrice);
         const Authorization = req.headers.authorization.split(' ')[1];
         let config = {
             method: 'get',
@@ -20,7 +19,7 @@ export const getProducts = async (req, res) => {
             res.status(200).send(response.data);
           })
           .catch((error) => {
-            res.status(400).send({message: 'Invalid credentials'});
+            res.status(400).send({message: error.message});
           });
     } catch (err) {
         res.status(500).send({ message: err.message });
